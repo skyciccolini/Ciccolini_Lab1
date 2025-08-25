@@ -79,7 +79,7 @@ test_dataframe <- data.frame(1:15, repeated_pets) ##gives df
 # OR
 test <- cbind(1:15, repeated_pets) ##cbind gives matrix
 
-
+#to push
 
 
 
