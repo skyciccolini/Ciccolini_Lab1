@@ -114,12 +114,41 @@ head(jn_sub_forreal)
 ## Filter to Specific Rows
 
 ```{r}
-#filter to MO specific records
-jn_MO <- jn_sub_forreal[jn_sub == "MO" ,]
+# filter to MO specific records
+jn_MO <- jn_full[jn_full$State == "MO" ,]
 
 head(jn_MO)
+
+# filter to cities named columbia
+
+jn_CO <- jn_full[jn_full$Town == "Columbia", ]
+
+head(jn_CO)
+
+# filter to Columbia, MO
+
+jn_COMO <- jn_full[jn_full$State == "MO" & jn_full$Town == "Columbia", ]
+
+head(jn_COMO)
+
+# remove cols
+
+jn_COMO <- jn_full[jn_full$State == "MO" & jn_full$Town == "Columbia", c("Town", "State", "Count")]
+
+head(jn_COMO)
+
 ```
 
+## Calculate a Percentage of Total Sightings
+
+```{r}
+
+perc_como <- nrow(jn_full[jn_full$Town == "Columbia" & jn_full$State == "MO" , ]) / nrow(jn_full) * 100
+
+
+perc_como
+
+```
 
 
 
