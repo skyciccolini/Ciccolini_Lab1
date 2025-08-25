@@ -1,0 +1,67 @@
+---
+title: "Ciccolini_Week1_Trial"
+author: "Skylar Ciccolini"
+date: "2025-08-25"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Import Data
+
+We are going to import data from journey north monarch data.
+
+```{r}
+jn <- read.csv("Data/journeynorth.csv")
+
+jn2 <- read.csv("Data/journeynorth2.csv")
+
+```
+
+
+## Check out the data
+
+```{r}
+
+head(jn) ##look at first 6 records
+
+head(jn, 10) ##look at first 10 records
+
+head(jn2)
+
+str(jn)
+
+str(jn2)
+
+```
+
+## Merge the datasets
+
+```{r}
+
+jn_full <- 
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
