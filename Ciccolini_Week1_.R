@@ -1,3 +1,6 @@
+#Getting Started ---- 
+## ---- creates a new outline
+
 #log function
 log(987) ##note this is natural log
 
@@ -64,6 +67,11 @@ pets <- c("kids", "cats", "dogs")
 
 repeated_pets <- rep(pets, times = 5)
 
+
+#check structure ----
+is.vector(repeated_pets)
+
+is.array(repeated_pets)
 
 
 
