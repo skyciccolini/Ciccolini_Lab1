@@ -1,7 +1,7 @@
 ---
-title: "Document Template"
-author: "Kate Nelson"
-date: "8/7/2025"
+title: "Ciccolini Lab 1"
+author: "Skylar Ciccolini"
+date: "8/25/2025"
 output: 
  html_document:
     code_folding: show
