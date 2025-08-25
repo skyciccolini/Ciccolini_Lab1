@@ -73,6 +73,32 @@ is.vector(repeated_pets)
 
 is.array(repeated_pets)
 
+# build out a df ----
+test_dataframe <- data.frame(1:15, repeated_pets) ##gives df
+
+# OR
+test <- cbind(1:15, repeated_pets) ##cbind gives matrix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
