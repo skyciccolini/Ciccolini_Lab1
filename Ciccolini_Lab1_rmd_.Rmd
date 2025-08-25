@@ -1,0 +1,87 @@
+---
+title: "Document Template"
+author: "Kate Nelson"
+date: "8/7/2025"
+output: 
+ html_document:
+    code_folding: show
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 4
+    number_sections: true
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Front Material 
+
+Some intro stuff to say. Blah, blah, blah...
+
+
+## Section Header {.tabset}
+
+Section headers are awesome and useful. Use them, please!!
+
+If you so desire you can also use tabs. To create tabs add `{.tabset}` to the section header under which you would like to include tabs. This will automatically place the material under the next level of header (`###`) in a new tab. Cool beans.
+
+### This is my new tab
+
+Say some stuff here. 
+
+Then create a code chunk.
+
+```{r my_first_chunk}
+
+summary(cars) #write some code, get some results, do a little dance
+
+```
+
+
+### This is my second tab
+
+OOOOH, another tab.
+
+
+#### This will create a sub-header in a tab
+
+Not sure why you would need to but you can technically do this.
+
+If you find you want more space between lines of text or between code chunks and text insert the text `</br>` which is `html` for line-break.
+
+</br> 
+
+
+## Back to our primary section headers
+
+Now let's make  a standard subsection (without tabs).
+
+
+### Adding images
+
+I can add an image like this.
+
+`<center>![](fixing_problems.png)</center>`
+
+<center>![](fixing_problems.png)</center>
+
+</br>
+
+`<center>` is a brute-force way of telling Markdown to start centering some text or an image, `</center>` tells Markdown to stop centering. (This should be familiar to anyone who poked around with html code.) 
+
+### Adding url links
+
+I can add a link to a url like this: [mycoolwebsite](https://www.ruralityindex.com). Just put the text that will be linked in square brackets and immediately follow it with the url in parentheses.
+
+### Code chunk options
+
+I can also change code chunk settings to make my documents purtier (or at least less messy). There are lots of options. Here are a few.
+
+```{r my_custom_chunk, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',fig.width=4, fig.height=4}
+
+plot(cars$speed, cars$dist)
+
+```
