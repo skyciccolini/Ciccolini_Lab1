@@ -43,12 +43,82 @@ str(jn2)
 
 ```{r}
 
-jn_full <- 
+#one way to do this is with rbind
+jn_full <- rbind(jn, jn2)
+
+#check df
+head(jn_full)
+
+#indexing into df
+
+dim(jn_full) ##gives you rows/col dimensions
+
+ncol(jn_full) ##just gives you cols
+
+nrow(jn_full) ##just gives you rows
+
+length(jn_full) ##defaults to length of no of cols
+
+length(jn_full[ , 1]) ##gives all rows and first col
+
+length(jn_full[1, ]) ##gives first row, all cols
+
+length(jn_full$Date) ##can also index by col name
+
+#extracting column names
+jn_names <- names(jn_full) ##gives you a vector of col names
+
+jn_names
 
 ```
 
+## Replace Column Names
+
+```{r}
+
+#replace the names 
+names(jn_full) <- c("Date", "Town", "State", "Lat", "Long", "Count")
+
+head(jn_full)
+
+# Another way
+Newnames <- c("Date", "Town", "State", "Lat", "Long", "Count")
+
+names(jn_full) <- Newnames
 
 
+```
+
+## Create a subset
+
+```{r}
+
+#pull out state and location
+jn_sub <- jn_full[ , c("State", "Count")]
+
+head(jn_sub)
+
+# OR
+
+jn_sub <- jn_full$State
+
+jn_sub2 <- jn_full$Count
+
+jn_sub_forreal <- cbind(jn_sub, jn_sub2)
+
+head(jn_sub_forreal)
+
+
+```
+
+## Filter to Specific Rows
+
+```{r}
+#filter to MO specific records
+jn_MO <- jn_sub_forreal[jn_sub == "MO" ,]
+
+head(jn_MO)
+```
 
 
 
