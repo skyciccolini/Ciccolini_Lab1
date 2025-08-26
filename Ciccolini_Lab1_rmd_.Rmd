@@ -1,7 +1,7 @@
 ---
 title: "Ciccolini_Lab1"
 author: "Skylar Ciccolini"
-date: "2025-08-25"
+date: "2025-08-26"
 output: html_document
 ---
 
@@ -9,22 +9,174 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Read in Data {.tabset}
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### 1.2.3 Reading in the gapminder data, reversing country order, and displaying first 15 countries.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
 
-```{r cars}
-summary(cars)
+library(gapminder)
+
+gapminder_sorted <- sort(gapminder$country, decreasing = TRUE)
+
+head(gapminder_sorted, n = 15)
+
+str(gapminder)
+
 ```
 
-## Including Plots
+This might not work as well if the country column is a character instead of a factor.
 
-You can also embed plots, for example:
+### 1.2.4 Calculating summary statistics for Life expectancy, Population, and GDPperCapita.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+# first, mean
+mean(gapminder$lifeExp)
+
+mean(gapminder$pop)
+
+mean(gapminder$gdpPercap)
+
+# second, median
+median(gapminder$lifeExp)
+
+median(gapminder$pop)
+
+median(gapminder$gdpPercap)
+
+# third, stand dev
+sd(gapminder$lifeExp)
+
+sd(gapminder$pop)
+
+sd(gapminder$gdpPercap)
+
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### 1.2.5 Calculate summary statistics in a single dataframe for Life expectancy, Population, and GDPperCapita for each continent.
+
+```{r}
+LE_country <- aggregate(gapminder[ , "lifeExp"], by = gapminder["country"],
+                        FUN = mean, na.action = rm)
+
+pop_country <- aggregate(gapminder[ , "pop"], by = gapminder["country"],
+                        FUN = mean, na.action = rm)
+
+gdp_country <- aggregate(gapminder[ , "gdpPercap"], by = gapminder["country"],
+                        FUN = mean, na.action = rm)
+
+
+# now put them together
+gapminder_summary <- cbind(LE_country, pop_country$pop, gdp_country$gdpPercap)
+
+head(gapminder_summary)
+
+```
+
+### 1.2.6 Use the first 5 records of the global average Life Expectancy over time.
+
+```{r}
+avg_LE <- aggregate(gapminder[ , "lifeExp"], by = gapminder["year"],
+                    FUN = mean, na.action = rm)
+
+# and now to plot
+plot(avg_LE[1:5, ])
+
+# make it cooler
+plot(avg_LE[1:5, ], col = "orange", bg = "pink", pch = 10, cex = 3)
+
+```
+
+### 1.2.7 Check out a new dataset from datasets package
+
+```{r}
+str(chickwts)
+
+dim(chickwts)
+
+head(chickwts)
+
+```
+
+
+### 1.2.8 Calculate some summary stats for faithful dataset
+
+```{r}
+# first, mean
+mean(chickwts$weight)
+
+# second, median
+median(chickwts$weight)
+
+# third, standard dev
+sd(chickwts$weight)
+
+```
+
+
+### 1.2.9 Calculate summary statistics for chick weight by feed type
+
+```{r}
+chickwts_mean <- aggregate(chickwts[ , "weight"], by = chickwts["feed"],
+                           FUN = mean)
+
+head(chickwts_mean)
+
+
+```
+
+
+### 1.2.10 Create two plots (one with grouped data, one without)
+
+```{r}
+# with grouped data
+plot(chickwts_mean, main = "Average Chick Weights by Feed Type",
+       xlab = "Feed Type", ylab = "Weight", col = "red", cex = 2)
+
+# without grouped data
+plot(chickwts, main = "Chick Weights by Feed Type",
+     xlab = "Weight", ylab = "Feed Type")
+
+```
+
+
+### 1.2.11 Use the ls() to see objects in workspace, remove objects
+
+```{r}
+ls()
+
+rm(list = ls())
+
+ls()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
